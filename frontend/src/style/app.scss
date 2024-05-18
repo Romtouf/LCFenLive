@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 1rem;
+  color: white;
+
+  button,
+  a {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0 1rem;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    button,
+    a {
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+      cursor: pointer;
+    }
+
+    .hamburger-menu {
+      display: flex;
+      flex-direction: column;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      padding: 1rem;
+      border-radius: 5px;
+
+      button,
+      a {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 5px;
+    width: 300px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+      }
+
+      button {
+        padding: 0.5rem;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

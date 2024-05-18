@@ -1,0 +1,36 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  form {
+    display: flex;
+
+    input {
+      flex-grow: 1;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+    }
+
+    button {
+      padding: 0.5rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
