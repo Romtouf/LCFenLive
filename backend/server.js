@@ -28,13 +28,15 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+// app.use("/api/msg", authRoutes);
 
 io.on("connection", (socket) => {
   console.log("a user connected");
-  socket.on("chat message", (msg) => {
+  socket.on("chat_message", (msg) => {
     if (typeof msg === "object" && msg.text && msg.username) {
       console.log("message: " + msg.text + ", username: " + msg.username);
-      io.emit("chat message", msg);
+      // Store the msg in db
+      io.emit("chat_message", msg);
     } else {
       console.log("Invalid message format received");
     }

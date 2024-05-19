@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Live from "./pages/Live";
+import Loader from "./components/Loader";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
@@ -24,6 +26,7 @@ const App = () => {
 
   return (
     <Router>
+      <Loader />
       <Routes>
         <Route
           path="/"
@@ -34,6 +37,7 @@ const App = () => {
           element={isLoggedIn ? <Live /> : <Navigate to="/" />}
         />
       </Routes>
+      <Footer />
     </Router>
   );
 };

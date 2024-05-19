@@ -26,6 +26,7 @@ const Modal = ({ type, closeModal }) => {
           }
         );
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("username", formData.username);
         window.location.href = "/live"; // Redirection vers la page Live
       }
       closeModal();

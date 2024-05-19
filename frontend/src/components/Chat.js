@@ -11,7 +11,8 @@ const Chat = () => {
   ); // Ajoutez un état pour le pseudo de l'utilisateur
 
   useEffect(() => {
-    socket.on("chat message", (msg) => {
+    // Récupérez les messages depuis la base de données
+    socket.on("chat_message", (msg) => {
       console.log(msg);
       if (typeof msg === "object" && msg.text && msg.username) {
         setMessages((prevMessages) => [msg, ...prevMessages]);
@@ -21,7 +22,7 @@ const Chat = () => {
     });
 
     return () => {
-      socket.off("chat message");
+      socket.off("chat_message");
     };
   }, []);
 
@@ -30,12 +31,9 @@ const Chat = () => {
     if (!username) {
       console.log("Username is not defined");
       // Redirigez l'utilisateur vers la page de connexion ou d'inscription
-      // Vous pouvez utiliser react-router pour cela
-      // Par exemple : history.push('/login');
-    } else {
-      socket.emit("chat message", { text: message, username: username });
-      setMessage("");
     }
+    socket.emit("chat_message", { text: message, username: username });
+    setMessage("");
   };
 
   return (

@@ -1,0 +1,42 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  background-image: linear-gradient(to right, black, yellow);
+  height: 200px;
+  gap: 40px;
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    & img {
+      height: 100px;
+      width: 100px;
+    }
+  }
+  & span {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 400;
+    @media (max-width: 500px) {
+      text-align: center;
+    }
+  }
+}
+
+.br-none {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .br-none {
+    display: block;
+  }
+}

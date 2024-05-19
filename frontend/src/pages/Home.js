@@ -1,14 +1,14 @@
 import React from "react";
-import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
+import banniere from "../assets/banniere.webp";
 
 const Home = ({ isLoggedIn, handleLogout }) => {
   return (
     <>
-      <Loader />
       <div className="home">
         <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-        <h1>Bienvenue au Lisieux Club Futsal</h1>
+        <h1>Lisieux Club Futsal en live</h1>
+        <img src={banniere} alt="Bannière" />
       </div>
     </>
   );
