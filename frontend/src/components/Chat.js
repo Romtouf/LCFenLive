@@ -8,10 +8,15 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const [username, setUsername] = useState(
     localStorage.getItem("username") || ""
-  ); // Ajoutez un état pour le pseudo de l'utilisateur
+  );
 
   useEffect(() => {
-    // Récupérez les messages depuis la base de données
+    // Récupérer les messages précédents
+    socket.on("previous_messages", (msgs) => {
+      setMessages(msgs);
+    });
+
+    // Écouter les nouveaux messages
     socket.on("chat_message", (msg) => {
       console.log(msg);
       if (typeof msg === "object" && msg.text && msg.username) {
@@ -21,7 +26,11 @@ const Chat = () => {
       }
     });
 
+    // Demander les messages précédents lors de la connexion
+    socket.emit("request_previous_messages");
+
     return () => {
+      socket.off("previous_messages");
       socket.off("chat_message");
     };
   }, []);
@@ -29,8 +38,8 @@ const Chat = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!username) {
-      console.log("Username is not defined");
-      // Redirigez l'utilisateur vers la page de connexion ou d'inscription
+      alert("Veuillez entrer un pseudo avant d'envoyer des messages.");
+      return;
     }
     socket.emit("chat_message", { text: message, username: username });
     setMessage("");
@@ -38,12 +47,12 @@ const Chat = () => {
 
   return (
     <div className="chat">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="chat-form">
         <input
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="Écris ton message ici"
+          placeholder="Tapez votre message ici"
         />
         <button type="submit">Envoyer</button>
       </form>
@@ -53,7 +62,7 @@ const Chat = () => {
             {typeof msg === "object" && msg.username && msg.text
               ? `${msg.username}: ${msg.text}`
               : "Invalid message format"}
-          </li> // Affichez le pseudo et le message
+          </li>
         ))}
       </ul>
     </div>
