@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import logo from "../assets/logo-lcf-1.webp";
 
 const Modal = ({ type, closeModal }) => {
   const [formData, setFormData] = useState({
@@ -40,6 +41,7 @@ const Modal = ({ type, closeModal }) => {
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h2>{type === "register" ? "S'inscrire" : "Se connecter"}</h2>
         <form onSubmit={handleSubmit}>
+          <img src={logo} alt="Logo" />
           <input
             type="text"
             name="username"
@@ -66,7 +68,7 @@ const Modal = ({ type, closeModal }) => {
             onChange={handleChange}
             required
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Envoyer</button>
         </form>
       </div>
     </div>

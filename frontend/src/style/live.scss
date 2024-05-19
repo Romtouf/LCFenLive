@@ -8,12 +8,27 @@
     background-color: #333;
     color: white;
     padding: 1rem;
+    margin-bottom: 5px;
+    & a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    & button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+    }
   }
 
   .live-content {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    gap: 20px;
 
     .live-video {
       width: 67%;
@@ -31,6 +46,8 @@
         margin: 0;
         flex-grow: 1;
         overflow-y: auto;
+        border: 1px solid black;
+        background-color: rgb(225, 219, 219);
       }
 
       li {
@@ -45,11 +62,11 @@
           flex-grow: 1;
           padding: 0.5rem;
           border: 1px solid #ddd;
+          border: 1px solid black;
         }
 
         button {
           padding: 0.5rem;
-          background-color: #333;
           color: white;
           border: none;
           cursor: pointer;
@@ -70,6 +87,9 @@
       .chat {
         order: 2;
       }
+    }
+    form {
+      margin-top: 20px;
     }
   }
 }

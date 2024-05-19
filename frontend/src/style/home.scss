@@ -1,8 +1,24 @@
 .home {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0;
 
   .navbar {
     margin-bottom: 2rem;
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 50px;
+  }
+
+  .responsive-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      margin-bottom: 1rem;
+    }
   }
 }

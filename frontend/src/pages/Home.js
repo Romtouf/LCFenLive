@@ -8,7 +8,7 @@ const Home = ({ isLoggedIn, handleLogout }) => {
       <div className="home">
         <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <h1>Lisieux Club Futsal en live</h1>
-        <img src={banniere} alt="Bannière" />
+        <img src={banniere} alt="Bannière" className="responsive-image" />
       </div>
     </>
   );

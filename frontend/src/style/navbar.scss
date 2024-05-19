@@ -1,9 +1,10 @@
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #333;
   padding: 1rem;
   color: white;
+  width: 100%;
 
   button,
   a {
@@ -13,41 +14,13 @@
     cursor: pointer;
     margin: 0 1rem;
     text-decoration: none;
-  }
-
-  .hamburger {
-    display: none;
+    font-size: 1rem;
   }
 
   @media (max-width: 768px) {
     button,
     a {
-      display: none;
-    }
-
-    .hamburger {
-      display: block;
-      cursor: pointer;
-    }
-
-    .hamburger-menu {
-      display: flex;
-      flex-direction: column;
-      background-color: #333;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      padding: 1rem;
-      border-radius: 5px;
-
-      button,
-      a {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        margin-bottom: 1rem;
-      }
+      margin: 0.5rem 0;
     }
   }
 }

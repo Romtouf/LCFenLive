@@ -38,6 +38,15 @@ const Chat = () => {
 
   return (
     <div className="chat">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Écris ton message ici"
+        />
+        <button type="submit">Envoyer</button>
+      </form>
       <ul>
         {messages.map((msg, index) => (
           <li key={index}>
@@ -47,15 +56,6 @@ const Chat = () => {
           </li> // Affichez le pseudo et le message
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Type your message here"
-        />
-        <button type="submit">Envoyer</button>
-      </form>
     </div>
   );
 };
