@@ -13,7 +13,7 @@ const Chat = () => {
   useEffect(() => {
     // Récupérer les messages précédents
     socket.on("previous_messages", (msgs) => {
-      setMessages(msgs);
+      setMessages(msgs.reverse());
     });
 
     // Écouter les nouveaux messages
@@ -61,11 +61,16 @@ const Chat = () => {
           {messages.map((msg, index) => (
             <div
               key={index}
-              className={index % 2 === 0 ? "white-background" : ""}
+              className={`message ${index % 2 === 0 ? "white-background" : ""}`}
             >
-              {typeof msg === "object" && msg.username && msg.text
-                ? `${msg.username}: ${msg.text}`
-                : "Invalid message format"}
+              {typeof msg === "object" && msg.username && msg.text ? (
+                <>
+                  <strong>{msg.username}: </strong>
+                  {msg.text}
+                </>
+              ) : (
+                "Invalid message format"
+              )}
             </div>
           ))}
         </div>

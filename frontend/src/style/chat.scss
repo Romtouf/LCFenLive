@@ -1,7 +1,7 @@
 .chat {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 100%;
 
   ul {
     list-style: none;
@@ -23,6 +23,18 @@
   #message-container {
     max-height: 678px; /* Ajustez cette valeur en fonction de la hauteur souhaitée */
     overflow-y: auto;
+  }
+
+  #message-container::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .message {
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-x: hidden;
   }
 
   form {
