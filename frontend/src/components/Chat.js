@@ -58,7 +58,7 @@ const Chat = () => {
       </form>
       <ul>
         {messages.map((msg, index) => (
-          <li key={index}>
+          <li key={index} className={index % 2 === 0 ? "white-background" : ""}>
             {typeof msg === "object" && msg.username && msg.text
               ? `${msg.username}: ${msg.text}`
               : "Invalid message format"}
