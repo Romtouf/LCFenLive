@@ -49,7 +49,11 @@ io.on("connection", async (socket) => {
   socket.emit("previous_messages", lastMessages.reverse());
 
   socket.on("chat_message", async (msg) => {
-    const message = new Message({ username: msg.username, text: msg.text });
+    const message = new Message({
+      username: msg.username,
+      text: msg.text,
+      timestamp: new Date(),
+    });
     await message.save();
 
     // Émettre le message à tous les clients connectés
@@ -57,7 +61,7 @@ io.on("connection", async (socket) => {
 
     // Limiter les messages à 100
     const messageCount = await Message.countDocuments();
-    if (messageCount > 100) {
+    if (messageCount > 50) {
       const oldestMessage = await Message.findOne()
         .sort({ timestamp: 1 })
         .exec();
@@ -71,10 +75,10 @@ io.on("connection", async (socket) => {
 });
 
 // Tâche cron pour effacer les messages vieux de plus de 3 heures toutes les 3 heures
+// Tâche cron pour effacer tous les messages toutes les 3 heures
 cron.schedule("0 */3 * * *", async () => {
-  const threeHoursAgo = new Date(Date.now() - 3 * 60 * 60 * 1000);
-  await Message.deleteMany({ timestamp: { $lt: threeHoursAgo } });
-  console.log("Messages older than 3 hours deleted");
+  await Message.deleteMany({});
+  console.log("All messages deleted");
 });
 
 const PORT = process.env.PORT || 5000;
