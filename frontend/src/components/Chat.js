@@ -57,13 +57,18 @@ const Chat = () => {
         <button type="submit">Envoyer</button>
       </form>
       <ul>
-        {messages.map((msg, index) => (
-          <li key={index} className={index % 2 === 0 ? "white-background" : ""}>
-            {typeof msg === "object" && msg.username && msg.text
-              ? `${msg.username}: ${msg.text}`
-              : "Invalid message format"}
-          </li>
-        ))}
+        <div id="message-container">
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={index % 2 === 0 ? "white-background" : ""}
+            >
+              {typeof msg === "object" && msg.username && msg.text
+                ? `${msg.username}: ${msg.text}`
+                : "Invalid message format"}
+            </div>
+          ))}
+        </div>
       </ul>
     </div>
   );

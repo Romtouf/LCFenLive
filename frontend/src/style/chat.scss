@@ -20,6 +20,11 @@
     background-color: white;
   }
 
+  #message-container {
+    max-height: 678px; /* Ajustez cette valeur en fonction de la hauteur souhaitée */
+    overflow-y: auto;
+  }
+
   form {
     display: flex;
 

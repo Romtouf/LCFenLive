@@ -74,11 +74,18 @@ io.on("connection", async (socket) => {
   });
 });
 
-// Tâche cron pour effacer les messages vieux de plus de 3 heures toutes les 3 heures
-// Tâche cron pour effacer tous les messages toutes les 3 heures
-cron.schedule("0 */3 * * *", async () => {
-  await Message.deleteMany({});
-  console.log("All messages deleted");
+// Tâche cron pour effacer les messages vieux de plus de 15 minutes toutes les 15 minutes
+cron.schedule("*/15 * * * *", async () => {
+  const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
+  const messagesToDelete = await Message.find({
+    timestamp: { $lt: fifteenMinutesAgo },
+  })
+    .sort({ timestamp: -1 })
+    .skip(30)
+    .exec();
+  const idsToDelete = messagesToDelete.map((message) => message._id);
+  await Message.deleteMany({ _id: { $in: idsToDelete } });
+  console.log("Messages older than 15 minutes deleted");
 });
 
 const PORT = process.env.PORT || 5000;
