@@ -6,9 +6,7 @@ const socket = io("http://localhost:5000");
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
-  const [username, setUsername] = useState(
-    localStorage.getItem("username") || ""
-  );
+  const [username] = useState(localStorage.getItem("username") || "");
 
   useEffect(() => {
     // Récupérer les messages précédents

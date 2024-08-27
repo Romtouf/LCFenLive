@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Live from "./pages/Live";
-import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -26,7 +25,6 @@ const App = () => {
 
   return (
     <Router>
-      <Loader />
       <Routes>
         <Route
           path="/"

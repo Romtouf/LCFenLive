@@ -1,15 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import LiveVideo from "../components/LiveVideo";
 import Chat from "../components/Chat";
+import Navbar from "../components/Navbar";
 
 const Live = () => {
-  const videoUrl = process.env.REACT_APP_VIDEO_URL;
-  console.log("Video URL:", videoUrl);
-
   return (
     <div className="live">
-      <nav className="live-nav">
+      {/* <nav className="live-nav">
         <Link to="/">Accueil</Link>
         <button
           onClick={() => {
@@ -19,9 +17,10 @@ const Live = () => {
         >
           Se déconnecter
         </button>
-      </nav>
+      </nav> */}
+      <Navbar />
       <div className="live-content">
-        <LiveVideo videoUrl={videoUrl} />
+        <LiveVideo />
         <Chat />
       </div>
     </div>
