@@ -28,7 +28,6 @@ const Navbar = ({ isLoggedIn, handleLogout }) => {
       {isLivePage ? (
         <>
           <Link to="/">Accueil</Link>
-          <button onClick={handleLogout}>Se déconnecter</button>
         </>
       ) : !isLoggedIn ? (
         <>
