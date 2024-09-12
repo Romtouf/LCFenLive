@@ -20,6 +20,21 @@ const options = {
   cert: fs.readFileSync("path/to/your/certificate.crt"),
 };
 
+app.use(
+  helmet({
+    crossOriginOpenerPolicy: { policy: "same-origin" },
+    originAgentCluster: true,
+  })
+);
+
+app.use(
+  cors({
+    origin: "https://localhost:3000",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
 const server = https.createServer(options, app);
 const io = new Server(server, {
   cors: {
@@ -42,13 +57,6 @@ mongoose
   });
 
 app.use(morgan("dev"));
-app.use(
-  helmet({
-    crossOriginOpenerPolicy: { policy: "same-origin" },
-    originAgentCluster: true,
-  })
-);
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 
