@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://localhost:3000",
+    origin: "http://147.79.114.27:3000",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -42,7 +42,7 @@ app.use(
     originAgentCluster: true,
   })
 );
-app.use(cors({ origin: "https://localhost:3000", credentials: true }));
+app.use(cors({ origin: "http://147.79.114.27:3000", credentials: true }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 
