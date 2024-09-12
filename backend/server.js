@@ -60,6 +60,10 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to LCFenLive API");
+});
+
 io.on("connection", async (socket) => {
   console.log("a user connected");
 
