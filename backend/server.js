@@ -46,7 +46,7 @@ app.use(cors({ origin: "https://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Welcome to LCFenLive API");
 });
 
