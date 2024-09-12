@@ -42,7 +42,12 @@ mongoose
   });
 
 app.use(morgan("dev"));
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginOpenerPolicy: { policy: "same-origin" },
+    originAgentCluster: true,
+  })
+);
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
