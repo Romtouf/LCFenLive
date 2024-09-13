@@ -17,10 +17,10 @@ const Modal = ({ type, closeModal }) => {
     e.preventDefault();
     try {
       if (type === "register") {
-        await axios.post("http://localhost:5000/api/auth/register", formData);
+        await axios.post("https://api.lcflive.fr/api/auth/register", formData);
       } else if (type === "login") {
         const response = await axios.post(
-          "http://localhost:5000/api/auth/login",
+          "https://api.lcflive.fr/api/auth/login",
           {
             username: formData.username,
             password: formData.password,

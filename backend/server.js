@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://147.79.114.27:3000",
+    origin: ["https://lcflive.fr"],
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -39,16 +39,22 @@ app.use(
     originAgentCluster: true,
   })
 );
-app.use(cors({ origin: "http://147.79.114.27:3000", credentials: true }));
+
+app.use(
+  cors({
+    origin: "https://lcflive.fr",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to LCFenLive API");
+  res.send("Welcome to LCFLive API");
 });
 
 app.get("/api", (req, res) => {
-  res.send("Welcome to LCFenLive API");
+  res.send("Welcome to LCFLive API");
 });
 
 io.on("connection", async (socket) => {
